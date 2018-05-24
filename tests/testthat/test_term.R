@@ -15,4 +15,3 @@ test_that("options are respected", {
   expect_equal(cmd$bin, "foo")
   expect_equal(cmd$args, "%s")
 })
-
