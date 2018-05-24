@@ -1,0 +1,11 @@
+Package: gtfo
+Version: 0.0.0.9000
+Title: Go to terminal or file manager
+Description: Leave R by opening a terminal or file manager at a specified location. 
+Authors@R: person("Michel", "Lang", email = "michellang@gmail.com", role = c("aut", "cre"))
+License: GPL-2
+Encoding: UTF-8
+RoxygenNote: 6.0.1
+Suggests: 
+    testthat,
+    withr
