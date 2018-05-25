@@ -2,7 +2,7 @@ context("term")
 
 test_that("default term is detected", {
   if (tolower(Sys.info()[["sysname"]]) %in% c("solaris", "linux")) {
-    if (any(nzchar(Sys.which(names(linux.terminals)))))
+    if (any(nzchar(Sys.which(names(terminals)))))
       expect_is(find_term(), "cmd")
   } else {
     expect_is(find_term(), "cmd")

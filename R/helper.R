@@ -1,8 +1,17 @@
+get_os = function() {
+  tolower(Sys.info()[["sysname"]])
+}
+
 get_opts = function(target) {
   bin = getOption(sprintf("gtfo.%s.bin", target))
   if (is.null(bin))
     return(NULL)
-  cmd(bin, getOption(sprintf("gtfo.%s.args", target), "%s"))
+
+  args = if (target == "term")
+    getOption(sprintf("gtfo.%s.args", target), terminals[[bin]] %??% "%s")
+  else
+    getOption(sprintf("gtfo.%s.args", target), "%s")
+  return(cmd(bin, args))
 }
 
 `%??%` = function(lhs, rhs) {
@@ -16,10 +25,6 @@ cmd = function(bin, args) {
 exec = function(cmd, path) {
   command = paste(cmd$bin, sprintf(paste0(cmd$args, collapse = " "), shQuote(path)))
   message("Running command: ", command)
-  system(command,
-    ignore.stdout = FALSE,
-    ignore.stderr = FALSE,
-    wait = FALSE
-  )
+  system(command, ignore.stdout = TRUE, ignore.stderr = TRUE, wait = FALSE)
   invisible(TRUE)
 }
