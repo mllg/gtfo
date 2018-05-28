@@ -52,7 +52,9 @@ find_term = function() {
         return(cmd(w, terminals[[bin]]))
     }
   } else if (OS == "darwin") {
-    return(cmd("open", args = "-a iTerm.app %s"))
+    if (identical(Sys.getenv("TERM_PROGRAM"), "iTerm.app") && FALSE)
+      return(cmd("open", args = "-a iTerm.app %s"))
+    return(cmd("open", args = "-a 'Terminal' %s"))
   } else if (OS == "windows") {
     return(cmd("cmd.exe", "%s"))
   }
