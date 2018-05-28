@@ -25,6 +25,10 @@ cmd = function(bin, args) {
 exec = function(cmd, path) {
   command = paste(cmd$bin, sprintf(paste0(cmd$args, collapse = " "), shQuote(path)))
   message("Running command: ", command)
-  system(command, ignore.stdout = TRUE, ignore.stderr = TRUE, wait = FALSE)
+  if (get_os() == "windows") {
+    shell(command, wait = FALSE)
+  } else {
+    system(command, ignore.stdout = TRUE, ignore.stderr = TRUE, wait = FALSE)
+  }
   invisible(TRUE)
 }

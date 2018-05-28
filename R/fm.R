@@ -36,7 +36,7 @@ find_fm = function() {
   switch(get_os(),
     "linux" = cmd("xdg-open", "%s"),
     "darwin" = cmd("open", "%s"),
-    "windows" = cmd("explorer", "%s"),
+    "windows" = cmd("explorer.exe", "%s"),
     NULL
   )
 }
