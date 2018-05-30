@@ -19,10 +19,13 @@ The default terminal can be set via options:
   \item{\code{gtfo.term.args}:}{Arguments for \code{bin}. Use \dQuote{\%s} as placeholder for the path.}
 }
 
-If no option is set, the terminal defaults to \command{iTerm} on Mac OS and \command{cmd.exe} on Windows.
-On Linux, the first of the following terminal emulators found will be used:
-\command{gnome-terminal}, \command{konsole}, \command{xfce4-terminal}, \command{kitty}, \command{alacritty},
-\command{urxvt}, \command{lxterminal}.
+If no option is set, but the current R session runs inside \command{tmux}, a tmux split will be opened.
+Otherwise, a new terminal will be started using the following presets:
+\describe{
+ \item{Mac OS:}{If called from \command{iTerm}, start \command{iTerm}. Else start \command{Terminal}.}
+ \item{Linux:}{Try the follwing terminals and open the first one found: \command{kitty}, \command{alacritty}, \command{urxvt}, \command{gnome-terminal}, \command{konsole}, \command{xfce4-terminal}, \command{lxterminal}.}
+ \item{Windows:}{Start powershell.}
+}
 }
 \examples{
 \dontrun{
@@ -34,5 +37,5 @@ term(tempdir())
 }
 }
 \seealso{
-\code{\link{fm}} to start a file manager.
+\code{\link{fm}} to start a file manager and \code{\link{browse}} to start a browser.
 }

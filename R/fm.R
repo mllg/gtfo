@@ -14,7 +14,7 @@
 #' @param path [\code{character(1)}]\cr
 #'   Path. Defaults to the current working directory as reported by \code{\link[base]{getwd}}.
 #' @export
-#' @seealso \code{\link{term}} to start a terminal.
+#' @seealso \code{\link{term}} to start a terminal and \code{\link{browse}} to start a browser.
 #' @examples
 #' \dontrun{
 #' # Brose R's working directory
@@ -25,18 +25,9 @@
 #' }
 fm = function(path = getwd()) {
   path = normalizePath(path, mustWork = TRUE)
-  cmd = get_opts("fm") %??% find_fm()
+  cmd = get_opts("fm") %??% get_open()
   if (is.null(cmd))
     stop("No suitable file manager found. Please set one explicitly via options 'gtfo.fm.bin' and 'gtfo.fm.args'")
 
   exec(cmd, path)
-}
-
-find_fm = function() {
-  switch(OS,
-    "linux" = cmd("xdg-open", "%s"),
-    "darwin" = cmd("open", "%s"),
-    "windows" = cmd("explorer.exe", "%s"),
-    NULL
-  )
 }

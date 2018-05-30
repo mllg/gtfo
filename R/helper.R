@@ -6,10 +6,19 @@ get_opts = function(target) {
     return(NULL)
 
   args = if (target == "term")
-    getOption(sprintf("gtfo.%s.args", target), terminals[[bin]] %??% "%s")
+    getOption(sprintf("gtfo.%s.args", target), linux.terminals[[bin]] %??% "%s")
   else
     getOption(sprintf("gtfo.%s.args", target), "%s")
   return(cmd(bin, args))
+}
+
+get_open = function() {
+  switch(OS,
+    "linux" = cmd("xdg-open", "%s"),
+    "darwin" = cmd("open", "%s"),
+    "windows" = cmd("explorer.exe", "%s"),
+    NULL
+  )
 }
 
 `%??%` = function(lhs, rhs) {
@@ -22,7 +31,8 @@ cmd = function(bin, args) {
 
 exec = function(cmd, path) {
   command = paste(cmd$bin, sprintf(paste0(cmd$args, collapse = " "), shQuote(path)))
-  message("Running command: ", command)
+  if (isTRUE(getOption("gtfo.verbose", TRUE)))
+    message("GTFO: ", command)
   if (OS == "windows") {
     shell(command, shell = "powershell.exe", wait = FALSE)
   } else {

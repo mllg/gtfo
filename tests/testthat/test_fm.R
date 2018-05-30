@@ -2,7 +2,7 @@ context("fm")
 
 test_that("default fm is detected", {
   skip_on_os("solaris")
-  expect_is(find_fm(), "cmd")
+  expect_is(get_open(), "cmd")
 })
 
 test_that("options are parsed", {

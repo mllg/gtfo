@@ -31,5 +31,5 @@ fm(tempdir())
 }
 }
 \seealso{
-\code{\link{term}} to start a terminal.
+\code{\link{term}} to start a terminal and \code{\link{browse}} to start a browser.
 }
