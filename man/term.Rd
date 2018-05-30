@@ -12,18 +12,24 @@ Path. Defaults to the current working directory as reported by \code{\link[base]
 }
 \description{
 Opens a terminal emulator in directory \code{path}.
-First tries to create a \command{tmux} split, then to open a new terminal.
-The default terminal can be set via options:
-\describe{
-  \item{\code{gtfo.term.bin}:}{Binary to call.}
-  \item{\code{gtfo.term.args}:}{Arguments for \code{bin}. Use \dQuote{\%s} as placeholder for the path.}
-}
 
-If no option is set, but the current R session runs inside \command{tmux}, a tmux split will be opened.
-Otherwise, a new terminal will be started using the following presets:
+The possibilities to start a terminal are:
 \describe{
- \item{Mac OS:}{If called from \command{iTerm}, start \command{iTerm}. Else start \command{Terminal}.}
- \item{Linux:}{Try the follwing terminals and open the first one found: \command{kitty}, \command{alacritty}, \command{urxvt}, \command{gnome-terminal}, \command{konsole}, \command{xfce4-terminal}, \command{lxterminal}.}
+  \item{\dQuote{tmux}:}{Create a tmux split if the R session runs inside tmux.}
+  \item{\dQuote{rstudio}:}{Create a new RStudio terminal if the R session runs inside RStudio.}
+  \item{\dQuote{opts}:}{If set, use the options \dQuote{gtfo.terminal.bin} and \dQuote{gtfo.terminal.args} to open a new terminal or terminal tab.}
+  \item{\dQuote{default}:}{Open one of the hard-coded terminals. See note for details.}
+}
+The order of the different strategies can be controlled via the option \dQuote{gtfo.term.order} (default: \code{c("tmux", "rstudio", "opts", "default")}).
+}
+\note{
+The default terminal will determined as follows:
+\describe{
+ \item{Mac OS:}{If called from \command{iTerm}, start \command{iTerm}. Start \command{Terminal} otherwise.}
+ \item{Linux:}{Try to find the one of terminals in \code{$PATH} via \code{\link[base]{Sys.which}} and open the first one found:
+   \command{kitty}, \command{alacritty}, \command{urxvt},
+   \command{gnome-terminal}, \command{konsole},
+   \command{xfce4-terminal}, \command{lxterminal}.}
  \item{Windows:}{Start powershell.}
 }
 }

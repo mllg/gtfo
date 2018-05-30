@@ -19,7 +19,7 @@ The default browser can be set via options:
 }
 
 If no option is set, \command{xdg-open} will be called on Linux, \command{open} on Mac OS and \command{start} on Windows.
-These command open the associated default application.
+These commands open the associated default application.
 }
 \examples{
 \dontrun{

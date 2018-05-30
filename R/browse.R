@@ -9,7 +9,7 @@
 #' }
 #'
 #' If no option is set, \command{xdg-open} will be called on Linux, \command{open} on Mac OS and \command{start} on Windows.
-#' These command open the associated default application.
+#' These commands open the associated default application.
 #'
 #' @param url [\code{character(1)}]\cr
 #'   URL to open.

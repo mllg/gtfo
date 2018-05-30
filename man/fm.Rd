@@ -18,8 +18,8 @@ The default file manager can be set via options:
   \item{\code{gtfo.fm.args}:}{Arguments for \code{bin}. Use \dQuote{\%s} as placeholder for the path.}
 }
 
-If no option is set, \command{xdg-open} or \command{open} is called on Linux or Mac OS, respectively.
-The windows explorer will be started under windows.
+If no option is set, \command{xdg-open} will be called on Linux, \command{open} on Mac OS and \command{start} on Windows.
+These commands open the associated default application.
 }
 \examples{
 \dontrun{
@@ -29,6 +29,9 @@ fm()
 # Inspect R's tempdir
 fm(tempdir())
 }
+}
+\references{
+\url{https://github.com/freedesktop/xdg-utils}
 }
 \seealso{
 \code{\link{term}} to start a terminal and \code{\link{browse}} to start a browser.

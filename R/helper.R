@@ -25,18 +25,22 @@ get_open = function() {
   if (is.null(lhs)) rhs else lhs
 }
 
-cmd = function(bin, args) {
+cmd = function(bin, args = character(0L)) {
   structure(list(bin = bin, args = args), class = "cmd")
 }
 
-exec = function(cmd, path) {
-  command = paste(cmd$bin, sprintf(paste0(cmd$args, collapse = " "), shQuote(path)))
-  if (isTRUE(getOption("gtfo.verbose", TRUE)))
-    message("GTFO: ", command)
-  if (OS == "windows") {
-    shell(command, shell = "powershell.exe", wait = FALSE)
+exec = function(cmd, uri) {
+  if (is.expression(cmd$bin)) {
+    eval(cmd$bin)
   } else {
-    system(command, ignore.stdout = TRUE, ignore.stderr = TRUE, wait = FALSE)
+    command = paste(cmd$bin, sprintf(paste0(cmd$args, collapse = " "), shQuote(uri)))
+    if (isTRUE(getOption("gtfo.verbose", TRUE)))
+      message("GTFO: ", command)
+    if (OS == "windows") {
+      shell(command, shell = "powershell.exe", wait = FALSE)
+    } else {
+      system(command, ignore.stdout = TRUE, ignore.stderr = TRUE, wait = FALSE)
+    }
   }
   invisible(TRUE)
 }

@@ -9,7 +9,7 @@
 #' }
 #'
 #' If no option is set, \command{xdg-open} will be called on Linux, \command{open} on Mac OS and \command{start} on Windows.
-#' These command open the associated default application.
+#' These commands open the associated default application.
 #'
 #' @param path [\code{character(1)}]\cr
 #'   Path. Defaults to the current working directory as reported by \code{\link[base]{getwd}}.
