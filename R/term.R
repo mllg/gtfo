@@ -63,11 +63,11 @@ find_term = function() {
 }
 
 terminals = list(
-  "gnome-terminal" = "--working-directory=%s",
-  "konsole" = "--workdir=%s",
-  "xfce4-terminal" = "--working-directory=%s",
   "kitty" = "-d=%s",
   "alacritty" = "--working-directory=%s",
   "urxvt" = "-cd %s",
+  "gnome-terminal" = "--working-directory=%s",
+  "konsole" = "--workdir=%s",
+  "xfce4-terminal" = "--working-directory=%s",
   "lxterminal" = "--working-directory=%s"
 )
