@@ -1,6 +1,4 @@
-get_os = function() {
-  tolower(Sys.info()[["sysname"]])
-}
+OS = tolower(Sys.info()[["sysname"]])
 
 get_opts = function(target) {
   bin = getOption(sprintf("gtfo.%s.bin", target))
@@ -25,8 +23,8 @@ cmd = function(bin, args) {
 exec = function(cmd, path) {
   command = paste(cmd$bin, sprintf(paste0(cmd$args, collapse = " "), shQuote(path)))
   message("Running command: ", command)
-  if (get_os() == "windows") {
-    shell(command, wait = FALSE)
+  if (OS == "windows") {
+    shell(command, shell = "powershell.exe", wait = FALSE)
   } else {
     system(command, ignore.stdout = TRUE, ignore.stderr = TRUE, wait = FALSE)
   }

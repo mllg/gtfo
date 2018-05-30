@@ -43,8 +43,6 @@ find_tmux = function() {
 }
 
 find_term = function() {
-  OS = get_os()
-
   if (OS == "linux") {
     for (bin in names(terminals)) {
       w = Sys.which(bin)
@@ -53,14 +51,15 @@ find_term = function() {
     }
   } else if (OS == "darwin") {
     if (identical(Sys.getenv("TERM_PROGRAM"), "iTerm.app") && FALSE)
-      return(cmd("open", args = "-a iTerm.app %s"))
-    return(cmd("open", args = "-a 'Terminal' %s"))
+      return(cmd("open", args = c("-a iTerm.app",  "%s")))
+    return(cmd("open", args = c("-a 'Terminal'", "%s")))
   } else if (OS == "windows") {
-    return(cmd("cmd.exe", "%s"))
+    return(cmd("Start-Process", c("powershell.exe", "-WorkingDirectory %s")))
   }
 
   return(NULL)
 }
+
 
 terminals = list(
   "gnome-terminal" = "--working-directory=%s",

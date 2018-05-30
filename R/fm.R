@@ -33,7 +33,7 @@ fm = function(path = getwd()) {
 }
 
 find_fm = function() {
-  switch(get_os(),
+  switch(OS,
     "linux" = cmd("xdg-open", "%s"),
     "darwin" = cmd("open", "%s"),
     "windows" = cmd("explorer.exe", "%s"),
