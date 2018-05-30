@@ -8,13 +8,14 @@
 #'   \item{\code{gtfo.fm.args}:}{Arguments for \code{bin}. Use \dQuote{\%s} as placeholder for the path.}
 #' }
 #'
-#' If no option is set, \command{xdg-open} or \command{open} is called on Linux or Mac OS, respectively.
-#' The windows explorer will be started under windows.
+#' If no option is set, \command{xdg-open} will be called on Linux, \command{open} on Mac OS and \command{start} on Windows.
+#' These command open the associated default application.
 #'
 #' @param path [\code{character(1)}]\cr
 #'   Path. Defaults to the current working directory as reported by \code{\link[base]{getwd}}.
 #' @export
 #' @seealso \code{\link{term}} to start a terminal and \code{\link{browse}} to start a browser.
+#' @references \url{https://github.com/freedesktop/xdg-utils}
 #' @examples
 #' \dontrun{
 #' # Brose R's working directory

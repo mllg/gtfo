@@ -8,13 +8,14 @@
 #'   \item{\code{gtfo.browse.args}:}{Arguments for \code{bin}. Use \dQuote{\%s} as placeholder for the url.}
 #' }
 #'
-#' If no option is set, \command{xdg-open} or \command{open} is called on Linux or Mac OS, respectively.
-#' The windows explorer will be started under windows.
+#' If no option is set, \command{xdg-open} will be called on Linux, \command{open} on Mac OS and \command{start} on Windows.
+#' These command open the associated default application.
 #'
 #' @param url [\code{character(1)}]\cr
 #'   URL to open.
 #' @export
 #' @seealso \code{\link{term}} to start a terminal and \code{\link{fm}} to start a file manager.
+#' @references \url{https://github.com/freedesktop/xdg-utils}
 #' @examples
 #' \dontrun{
 #' # Open the R project web site

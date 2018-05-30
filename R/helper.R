@@ -16,7 +16,7 @@ get_open = function() {
   switch(OS,
     "linux" = cmd("xdg-open", "%s"),
     "darwin" = cmd("open", "%s"),
-    "windows" = cmd("explorer.exe", "%s"),
+    "windows" = cmd("start", "%s"),
     NULL
   )
 }

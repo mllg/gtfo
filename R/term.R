@@ -63,6 +63,13 @@ find_term = function() {
   return(NULL)
 }
 
+find_rstudio_term = function() {
+  if (identical(Sys.getenv("RSTUDIO"), "1")) {
+
+  }
+
+}
+
 linux.terminals = list(
   "kitty" = "-d=%s",
   "alacritty" = "--working-directory=%s",
