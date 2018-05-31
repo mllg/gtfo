@@ -25,6 +25,7 @@
 #' fm(tempdir())
 #' }
 fm = function(path = getwd()) {
+  assert_scalar(url)
   path = normalizePath(path, mustWork = TRUE)
   cmd = get_opts("fm") %??% get_open()
   if (is.null(cmd))

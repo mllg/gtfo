@@ -37,6 +37,7 @@
 #' term(tempdir())
 #' }
 term = function(path = getwd()) {
+  assert_scalar(url)
   path = normalizePath(path, mustWork = TRUE)
   term.order = getOption("gtfo.term.order", c("tmux", "rstudio", "opts", "default"))
   for (x in term.order) {

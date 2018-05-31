@@ -44,3 +44,8 @@ exec = function(cmd, uri) {
   }
   invisible(TRUE)
 }
+
+assert_scalar = function(x) {
+  if (length(x) != 1L)
+    stop(sprintf("Argument '%s' must have length 1", deparse(substitute(x))), call. = FALSE)
+}

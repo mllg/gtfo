@@ -22,8 +22,9 @@
 #' browse("https://www.r-project.org")
 #' }
 browse = function(url) {
+  assert_scalar(url)
   cmd = get_opts("browse") %??% get_open()
   if (is.null(cmd))
     stop("No suitable browser found. Please set one explicitly via options 'gtfo.browse.bin' and 'gtfo.browse.args'")
-  exec(cmd, url)
+  exec(cmd, as.character(url))
 }
